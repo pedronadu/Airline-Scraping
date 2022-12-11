@@ -20,6 +20,7 @@ class MainGui:
         log_txt = open("log.txt", "w")
         log_txt.close()
 
+    # def for returning the path of the assets
     def relative_to_assets(self, path: str) -> Path:
         return self.ASSETS_PATH / Path(path)
 
@@ -32,6 +33,7 @@ class MainGui:
         window.destroy()
         sys.exit()
 
+    # def for updating the log file
     def update_log_status(self):
         curr_lines = None
         file = os.getcwd() + r"\log.txt"
@@ -42,6 +44,7 @@ class MainGui:
             self.log_num_lines += 1
         window.after(1000, self.update_log_status)
 
+    #  Main def for the gui screen
     def create_screen(self):
 
         window.geometry("370x433")
@@ -161,6 +164,7 @@ class MainGui:
         th.start()
 
 
+# Class to make the gui run in a separate thread and to call the functions
 class Th(threading.Thread):
 
     def __init__(self, funct, location):
